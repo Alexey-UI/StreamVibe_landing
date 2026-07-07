@@ -35,7 +35,10 @@ const DISPOSABLE_DIRS = new Set([
 ])
 
 function basenameOf(rawPath) {
-  const trimmed = rawPath.trim().replace(/["']/g, '').replace(/[/\\]+$/, '')
+  const trimmed = rawPath
+    .trim()
+    .replace(/["']/g, '')
+    .replace(/[/\\]+$/, '')
   const parts = trimmed.split(/[/\\]/)
   return { full: trimmed, base: parts[parts.length - 1], segments: parts }
 }
@@ -68,9 +71,7 @@ function checkRm(stmt) {
 function checkRemoveItem(stmt) {
   if (!/-Recurse\b/i.test(stmt) || !/-Force\b/i.test(stmt)) return null
   const match = stmt.match(/Remove-Item\s+(.+)/i)
-  const args = (match?.[1] ?? '')
-    .split(/\s+/)
-    .filter((tok) => tok && !tok.startsWith('-'))
+  const args = (match?.[1] ?? '').split(/\s+/).filter((tok) => tok && !tok.startsWith('-'))
   return allTargetsAreDisposable(args) ? null : 'Remove-Item -Recurse -Force'
 }
 

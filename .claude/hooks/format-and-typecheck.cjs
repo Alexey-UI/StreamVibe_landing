@@ -18,7 +18,18 @@ const filePath = payload?.tool_input?.file_path
 if (!filePath) process.exit(0)
 
 const ext = path.extname(filePath)
-const FORMATTABLE = new Set(['.ts', '.tsx', '.css', '.json', '.md'])
+const FORMATTABLE = new Set([
+  '.ts',
+  '.tsx',
+  '.js',
+  '.cjs',
+  '.mjs',
+  '.css',
+  '.json',
+  '.md',
+  '.yml',
+  '.yaml',
+])
 const TYPECHECKED = new Set(['.ts', '.tsx'])
 
 if (FORMATTABLE.has(ext)) {
