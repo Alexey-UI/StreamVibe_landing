@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "pixso-mcp": {
+      "type": "http",
+      "url": "http://127.0.0.1:3667/mcp"
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  }
+}
