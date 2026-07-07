@@ -1,0 +1,28 @@
+.grid {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--sv-color-surface-1);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--sv-color-surface-2) 0,
+      var(--sv-color-surface-2) calc(100% / var(--tile-columns) - 2px),
+      transparent calc(100% / var(--tile-columns) - 2px),
+      transparent calc(100% / var(--tile-columns))
+    ),
+    repeating-linear-gradient(
+      180deg,
+      var(--sv-color-surface-3) 0,
+      var(--sv-color-surface-3) calc(100% / var(--tile-rows) - 2px),
+      transparent calc(100% / var(--tile-rows) - 2px),
+      transparent calc(100% / var(--tile-rows))
+    );
+}
+
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, var(--sv-color-bg) 90%);
+}

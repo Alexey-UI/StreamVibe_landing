@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 0 0 auto;
+  width: 200px;
+}
+
+.thumbnail {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--sv-color-text);
+  font-weight: 700;
+}
+
+.arrow {
+  color: var(--sv-color-text-muted);
+}

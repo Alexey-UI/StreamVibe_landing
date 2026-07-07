@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--sv-color-surface-2);
+  border: 1px solid var(--sv-color-border);
+  border-radius: var(--radius-md);
+}
+
+.name {
+  margin: 0;
+  color: var(--sv-color-text);
+}
+
+.description {
+  margin: 0;
+  color: var(--sv-color-text-muted);
+  flex: 1;
+}
+
+.price {
+  margin: 0;
+  color: var(--sv-color-text);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.period {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--sv-color-text-muted);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}

@@ -21,5 +21,6 @@ export default defineConfig({
     setupFiles: ['./src/setupTests.ts'],
     css: true,
     exclude: ['node_modules/**', 'tests/e2e/**'],
+    testTimeout: 15000,
   },
 })

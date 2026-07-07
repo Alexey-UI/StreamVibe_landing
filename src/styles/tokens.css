@@ -34,3 +34,37 @@
     --color-accent: #c084fc;
   }
 }
+
+/*
+  StreamVibe marketing page (Home) — fixed dark theme.
+  Intentionally NOT gated by prefers-color-scheme: this page is dark-only by
+  design (Netflix-style), unlike the --color-* pair above which still governs
+  NotFound and any other route.
+*/
+:root {
+  --sv-color-bg: #0f0f0f;
+  --sv-color-surface-1: #141414;
+  --sv-color-surface-2: #1a1a1a;
+  --sv-color-surface-3: #1e1e1e;
+  --sv-color-border: #262626;
+  --sv-color-text: #ffffff;
+  --sv-color-text-muted: #999999;
+  --sv-color-text-subtle: #bfbfbf;
+  --sv-color-primary: #e60000;
+  --sv-color-primary-hover: #b30000;
+  /*
+    Pixso's Red/60 (#ff3333) only reaches a 3.63:1 contrast ratio with white
+    text (axe/WCAG 1.4.3 requires 4.5:1) — darkened here so the "Choose Plan"
+    button passes AA while staying visually distinct from --sv-color-primary.
+  */
+  --sv-color-secondary: #cc0000;
+  --sv-color-secondary-hover: #a30000;
+
+  --sv-font-family: 'Manrope', var(--font-sans);
+  --sv-font-size-hero: 58px;
+  --sv-font-size-section-heading: 2rem;
+  --sv-font-size-body: 18px;
+  --sv-font-size-nav: 15px;
+
+  --sv-radius-pill: 999px;
+}
