@@ -1,0 +1,36 @@
+/*
+  Design tokens placeholder.
+  Replace these values with the tokens extracted from Pixso via the
+  `pixso-to-react` skill (colors, spacing, typography, radii, shadows).
+*/
+:root {
+  --color-text: #08060d;
+  --color-text-muted: #6b6375;
+  --color-bg: #ffffff;
+  --color-border: #e5e4e7;
+  --color-accent: #aa3bff;
+
+  --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #f3f4f6;
+    --color-text-muted: #9ca3af;
+    --color-bg: #16171d;
+    --color-border: #2e303a;
+    --color-accent: #c084fc;
+  }
+}
