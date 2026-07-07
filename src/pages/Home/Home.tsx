@@ -1,61 +1,54 @@
-import { useEffect, useMemo, useState } from 'react'
-import { FeatureCard } from '@components/FeatureCard/FeatureCard'
+import '@fontsource/manrope/400.css'
+import '@fontsource/manrope/700.css'
+import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary'
+import { useDocumentMeta } from '@hooks/useDocumentMeta'
+import { CategoriesSection } from './components/CategoriesSection/CategoriesSection'
+import { CtaBanner } from './components/CtaBanner/CtaBanner'
+import { DevicesSection } from './components/DevicesSection/DevicesSection'
+import { FaqSection } from './components/FaqSection/FaqSection'
+import { Footer } from './components/Footer/Footer'
+import { HeaderNav } from './components/HeaderNav/HeaderNav'
+import { Hero } from './components/Hero/Hero'
+import { PricingSection } from './components/PricingSection/PricingSection'
 import styles from './Home.module.css'
 
-const PAGE_TITLE = 'StreamVibe — Watch together, anywhere'
+const PAGE_TITLE = 'StreamVibe — The Best Streaming Experience'
 const PAGE_DESCRIPTION =
-  'StreamVibe lets you watch and chat with friends in real time, wherever you are.'
-
-const FEATURES = [
-  { title: 'Watch parties', description: 'Sync playback with friends in real time.' },
-  { title: 'Live chat', description: 'React and chat alongside the stream.' },
-  { title: 'Cross-device', description: 'Pick up exactly where you left off.' },
-]
+  'StreamVibe is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere.'
 
 export default function Home() {
-  const [query, setQuery] = useState('')
-
-  useEffect(() => {
-    document.title = PAGE_TITLE
-
-    const meta = document.querySelector('meta[name="description"]')
-    meta?.setAttribute('content', PAGE_DESCRIPTION)
-  }, [])
-
-  // Recomputed only when `query` or the static FEATURES list changes — not on
-  // every Home render — which is what lets FeatureCard's memo below actually
-  // skip re-rendering unaffected cards instead of receiving new-but-equal props.
-  const visibleFeatures = useMemo(
-    () => FEATURES.filter((feature) => feature.title.toLowerCase().includes(query.toLowerCase())),
-    [query],
-  )
+  useDocumentMeta(PAGE_TITLE, PAGE_DESCRIPTION)
 
   return (
-    <main className={styles.hero}>
-      <h1 className={styles.title}>StreamVibe</h1>
-      <p className={styles.subtitle}>{PAGE_DESCRIPTION}</p>
+    <div className={styles.page}>
+      <ErrorBoundary>
+        <HeaderNav />
+      </ErrorBoundary>
 
-      <label className={styles.searchLabel} htmlFor="feature-search">
-        Filter features
-      </label>
-      <input
-        id="feature-search"
-        type="search"
-        className={styles.search}
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-        placeholder="Search features…"
-      />
+      <main>
+        <ErrorBoundary>
+          <Hero />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <CategoriesSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <DevicesSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <FaqSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <PricingSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <CtaBanner />
+        </ErrorBoundary>
+      </main>
 
-      <div className={styles.features}>
-        {visibleFeatures.map((feature) => (
-          <FeatureCard
-            key={feature.title}
-            title={feature.title}
-            description={feature.description}
-          />
-        ))}
-      </div>
-    </main>
+      <ErrorBoundary>
+        <Footer />
+      </ErrorBoundary>
+    </div>
   )
 }
