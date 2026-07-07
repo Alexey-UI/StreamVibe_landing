@@ -22,8 +22,13 @@ jobs:
           node-version: 22
           cache: npm
 
+      # `npm ci` is stricter but fails here: Vite's rolldown dependency records
+      # its wasm-fallback (@emnapi/*) optional deps inconsistently across
+      # platforms in package-lock.json when the lockfile is generated on
+      # Windows. `npm install` resolves whatever the runner's platform
+      # actually needs instead of requiring an exact lockfile match.
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Lint
         run: npm run lint
